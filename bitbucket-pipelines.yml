@@ -8,8 +8,8 @@ pipelines:
           name: Sync GitHub On New Tag
           image: alpine/git:latest
           clone:
-            enabled: false
+            depth: full
           script:
-            - git clone --bare git@bitbucket.org:ku-gdsc/docker.git test_sync
-            - cd test_sync
+            - git clone --bare git@bitbucket.org:ku-gdsc/docker.git docker
+            - cd docker
             - git push git@github.com:ku-gdsc/docker.git main:main --follow-tags
